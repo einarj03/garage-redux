@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
 
 import Aside from './aside';
-import { fetchCar } from '../actions';
+import { fetchCar, removeCar } from '../actions';
 
 
 class CarsShow extends Component {
@@ -12,6 +12,11 @@ class CarsShow extends Component {
     if (!this.props.car) {
       this.props.fetchCar(this.props.match.params.id);
     }
+  }
+
+  handleDelete = () => {
+    const { removeCar, car, history } = this.props;
+    removeCar(car, history);
   }
 
   render() {
@@ -44,7 +49,7 @@ class CarsShow extends Component {
               <div className="plate">{plate}</div>
             </span>
           </div>
-          <button className="delete">
+          <button className="delete" onClick={this.handleDelete}>
             <i className="fa fa-trash-o" aria-hidden="true" />
             Delete
           </button>
@@ -62,7 +67,7 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(
-    { fetchCar },
+    { fetchCar, removeCar },
     dispatch
   );
 }

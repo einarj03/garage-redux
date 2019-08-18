@@ -16,9 +16,7 @@ import CarsShow from './containers/cars_show';
 
 
 const initialState = {
-  cars: [
-
-  ],
+  cars: [],
   garage: prompt("What is the name of your garage?")
 };
 
