@@ -7,7 +7,7 @@ module.exports = {
     filename: 'bundle.js'
   },
   devtool: 'sourcemap',
-  devServer: { historyApiFallback: true },
+  devServer: { historyApiFallback: true, port: 8080 },
   module: {
     rules: [
       {
